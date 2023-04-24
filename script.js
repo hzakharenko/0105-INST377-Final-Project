@@ -1,25 +1,20 @@
 // Define function to fetch data from API and create chart
 async function createChart() {
     try {
+     // need to figure out how to paginate the API using page=number by figuring out the endpoint somehow
       const response = await fetch('https://api.umd.io/v1/courses');
       const courses = await response.json();
   
-      // Create object to store count of courses by major
-      const majors = {};
+      // Create object to store count of courses by major --> will work once collecting all majors
+      const majors = courses.reduce((obj, course) => {
+        obj[course.department] = obj[course.department] + 1 || 1;
+        return obj;
+      }, {});
   
-      // Loop through courses and count by major
-      courses.forEach(course => {
-        if (majors[course.department]) {
-          majors[course.department]++;
-        } else {
-          majors[course.department] = 1;
-        }
-      });
-  
-      // Get canvas element for chart
+      // pulls the myChart element from HTML for charts.js
       const ctx = document.getElementById('myChart').getContext('2d');
   
-      // Create chart using Charts.js
+      // Charts.js chart
       const chart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -49,3 +44,4 @@ async function createChart() {
   
   // Call function to create chart
   createChart();
+  
