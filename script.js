@@ -1,7 +1,7 @@
 // Define function to fetch data from API and create chart
 async function createChart() {
     try {
-     // need to figure out how to paginate the API using page=number by figuring out the endpoint somehow
+     // need to figure out how to paginate the API using page=number by figuring out the endpoint somehow -- is is ?page_number=1 and goes up until 157
       const response = await fetch('https://api.umd.io/v1/courses');
       const courses = await response.json();
   
