@@ -23,6 +23,7 @@ async function getAllCourses() {
     }
   });
   chartData = majors; // Store the data in the global variable
+  console.log(majors)
   return majors;
 }
 
@@ -84,6 +85,7 @@ async function filterBarChart(filteredData) {
 
   // Get majors data
   const majors = filteredData
+  console.log(filteredData)
 
   // Check if a chart already exists
   const existingChart = Chart.getChart(canvas);
@@ -131,22 +133,43 @@ async function filterBarChart(filteredData) {
 
 
 // Function to filter the chart data
-function filterChartData(data, majorInput) {
+// function filterChartData(data, majorInput) {
 
-  if (majorInput === "") {
+//   if (majorInput === "") {
+//     drawBarChart(data);
+//     return;
+//   }
+
+//   let filteredData = [];
+
+//   // Check if data is an array
+//   if (Array.isArray(data)) {
+//     filteredData = data.filter((item) => item.major === majorInput);
+//   }
+//   console.log(filteredData)
+//   return filteredData;
+  
+// }
+
+function filterChartData(data, majorInput) {
+  const input = document.getElementById("major").value.toUpperCase();
+
+  if (input === "") {
     drawBarChart(data);
     return;
   }
 
-  let filteredData = [];
+  const filteredData = Object.entries(data)
+    .filter(([key, value]) => key === input)
+    .reduce((obj, [key, value]) => {
+      obj[key] = value;
+      console.log(obj)
+      return obj;
+    }, {});
 
-  // Check if data is an array
-  if (Array.isArray(data)) {
-    filteredData = data.filter((item) => item.major === majorInput);
-  }
-
-  return filteredData;
+    filterBarChart(filteredData);
 }
+
 
 
 // Call the fetchData function to retrieve the data from the API
