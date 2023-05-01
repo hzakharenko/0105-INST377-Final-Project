@@ -1,9 +1,37 @@
+
+// Set chartData as a global variable for easy access
+let chartData = [];
+
+// Function to handle the filter button click event
+function handleFilterClick() {
+  // Get the user's input from the form field
+  const majorInput = document.getElementById('major').value;
+
+  // Filter the chart data based on the user's input
+  const filteredData = filterChartData(chartData, majorInput);
+
+  // Render the chart with the filtered data
+  drawBarChart(filteredData);
+}
+
+// Function to filter the chart data
+function filterChartData(data, majorInput) {
+  let filteredData = [];
+
+  // Check if data is an array
+  if (Array.isArray(data)) {
+    filteredData = data.filter((item) => item.major === majorInput);
+  }
+
+  return filteredData;
+}
+
 // Get all courses and extract majors
 async function getAllCourses() {
   const allCourses = [];
 
   for (let i = 1; i <= 157; i++) {
-    const url = `https://api.umd.io/v0/courses?page=${i}`;
+    const url = `https://api.umd.io/v1/courses?page=${i}`;
     const response = await fetch(url);
     const courses = await response.json();
     allCourses.push(...courses);
@@ -18,14 +46,24 @@ async function getAllCourses() {
       majors[course.dept_id] = 1;
     }
   });
-
+  chartData = majors; // Store the data in the global variable
   return majors;
 }
 
+
 // Draw bar chart of number of courses per major
 async function drawBarChart() {
+  // Get the canvas element
+  const canvas = document.getElementById('myChart');
+
   // Get majors data
   const majors = await getAllCourses();
+
+  // Check if a chart already exists
+  const existingChart = Chart.getChart(canvas);
+  if (existingChart) {
+    existingChart.destroy();
+  }
 
   // Get chart data
   const chartData = {
@@ -65,5 +103,19 @@ async function drawBarChart() {
   });
 }
 
-// Call function to draw chart
+// Call the fetchData function to retrieve the data from the API
+getAllCourses();
+
+// Add an event listener to the filter button
+const filterButton = document.getElementById('data_filter');
+//filterButton.addEventListener('click', handleFilterClick);
+
+filterButton.addEventListener('click', () => {
+  const majorInput = document.getElementById('major').value;
+  const filteredData = filterChartData(chartData, majorInput);
+  drawBarChart(getAllCourses(filteredData));
+});
+
+// // Call function to draw chart
 drawBarChart();
+

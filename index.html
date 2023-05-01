@@ -41,7 +41,7 @@
                 <img src="images/chart.jpg" alt="Image 1">
             </div>
         </div>
-        <div class="content">
+        <div class="container">
             <div class="text">
                 <h2>Majors with the most course offerings</h2>
                 <p>Template photos courtesy of Unsplash.</p>
@@ -50,15 +50,33 @@
                 <img src="images/chart.jpg" alt="Image 2">
             </div>
         </div>
-        <div class="content">
-            <div class="text">
-                <h2>Majors with the least course offerings</h2>
-                <p>Placer graphic for now:</p>
+        <div class="container">
+            <!--container-->
+            <div class="left_section box">
+                <!--left inputs-->
+                <h3>What major are you thinking about classes from?</h3>
+                <form class="box main_form">
+                    <div>
+                        <label for="major">Filter By major</label>
+                        <input type="text" id="major" name="major">
+                    </div>
+                    <div class="buttons">
+                        <button type="button" id="data_filter">Filter by major</button>
+                    </div>
+                </form>
             </div>
-            <div class="chart">
-                <div class="chart_container">
-                    <canvas id="myChart"></canvas>
-                  </div>
+            <div class="right_section box">
+                <!--right section-->
+                <!--images box-->
+                <div class="text">
+                    <h2>Majors with the least course offerings</h2>
+                    <p>Right now this chart shows all the majors with their course offerings, and lets the user filter. Having trouble with the API loading:</p>
+                </div>
+                <div class="chart">
+                    <div class="chart_container">
+                        <canvas id="myChart"></canvas>
+                      </div>
+                </div>
             </div>
         </div>
     </div>

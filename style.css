@@ -42,7 +42,7 @@ nav {
     background-color: lightcoral;
 }
 
-.content {
+.container {
     padding: 20px;
     border: 20px;
     background-color: lightgray;
@@ -80,3 +80,32 @@ nav {
 	width: 100%;
 	height: 100%
 }
+
+form input {
+	/* This is a hack to make sure our boxes line up with one another nicely */
+	width: 100%;
+	width: -moz-available;
+	/* WebKit-based browsers will ignore this. */
+	width: -webkit-fill-available;
+	/* Mozilla-based browsers will ignore this. */
+	width: fill-available;
+  
+	/* here we are setting white space correctly */
+	margin-bottom: 1rem;
+	height: 2rem;
+	border-radius: 4px;
+  }
+  
+  form label {
+	width: 100%;
+	width: -moz-available;
+	/* WebKit-based browsers will ignore this. */
+	width: -webkit-fill-available;
+	/* Mozilla-based browsers will ignore this. */
+	width: fill-available;
+	align-items: flex-start;
+  
+	display: block;
+	/* this turns the label text into a box we can set margins on */
+	margin-bottom: 0.5rem;
+  }
