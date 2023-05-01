@@ -1,6 +1,7 @@
 
 // Set chartData as a global variable for easy access
 let chartData = [];
+let isFilterClicked = false;
 
 // Get all courses and extract majors
 async function getAllCourses() {
@@ -83,9 +84,10 @@ async function filterBarChart(filteredData) {
   // Get the canvas element
   const canvas = document.getElementById('myChart');
 
-  // Get majors data
+  // Make sure filtered data is being put in the chart
   const majors = filteredData
-  console.log(filteredData)
+  console.log("The filtered data we will now represent in the bar chart is")
+  console.log(majors)
 
   // Check if a chart already exists
   const existingChart = Chart.getChart(canvas);
@@ -132,25 +134,6 @@ async function filterBarChart(filteredData) {
 }
 
 
-// Function to filter the chart data
-// function filterChartData(data, majorInput) {
-
-//   if (majorInput === "") {
-//     drawBarChart(data);
-//     return;
-//   }
-
-//   let filteredData = [];
-
-//   // Check if data is an array
-//   if (Array.isArray(data)) {
-//     filteredData = data.filter((item) => item.major === majorInput);
-//   }
-//   console.log(filteredData)
-//   return filteredData;
-  
-// }
-
 function filterChartData(data, majorInput) {
   const input = document.getElementById("major").value.toUpperCase();
 
@@ -166,14 +149,14 @@ function filterChartData(data, majorInput) {
       console.log(obj)
       return obj;
     }, {});
-
+    console.log(filteredData)
     filterBarChart(filteredData);
 }
 
 
 
-// Call the fetchData function to retrieve the data from the API
-getAllCourses();
+// Initial Data retrieval and chart load
+drawBarChart(getAllCourses());
 
 // Add an event listener to the filter button
 const filterButton = document.getElementById('data_filter');
@@ -183,7 +166,3 @@ filterButton.addEventListener('click', () => {
   const filteredData = filterChartData(chartData, majorInput);
   filterBarChart(getAllCourses(filteredData));
 });
-
-// // Call function to draw chart
-drawBarChart();
-
