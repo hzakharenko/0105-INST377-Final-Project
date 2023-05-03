@@ -149,14 +149,14 @@ function filterChartData(data, majorInput) {
       console.log(obj)
       return obj;
     }, {});
-    console.log(filteredData)
-    filterBarChart(filteredData);
+  console.log(filteredData)
+  filterBarChart(filteredData);
 }
 
 
 
 // Initial Data retrieval and chart load
-drawBarChart(getAllCourses());
+chart = drawBarChart(getAllCourses());
 
 // Add an event listener to the filter button
 const filterButton = document.getElementById('data_filter');
@@ -164,5 +164,8 @@ const filterButton = document.getElementById('data_filter');
 filterButton.addEventListener('click', () => {
   const majorInput = document.getElementById('major').value;
   const filteredData = filterChartData(chartData, majorInput);
-  filterBarChart(getAllCourses(filteredData));
 });
+
+function removeData(chart) {
+  chart.then(function (data) { chart.data.labels.pop(); chart.data.datasets.forEach((dataset) => { dataset.data.pop(); }); chart.update(); })
+}
