@@ -166,6 +166,7 @@ const clearDataButton = document.querySelector('#data_clear');
 
 filterButton.addEventListener('click', () => {
   const majorInput = document.getElementById('major').value;
+  //I am already filtering data using local storage by storing the initial chart input in a global variable
   const filteredData = filterChartData(chartData, majorInput);
 });
 
