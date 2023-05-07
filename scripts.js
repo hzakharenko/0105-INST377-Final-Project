@@ -14,6 +14,8 @@ async function getAllCourses() {
     allCourses.push(...courses);
   }
 
+  localStorage.setItem('storedData', JSON.stringify(allCourses));
+  console.log('localStorage Check', localStorage.getItem('storedData'))
   // Extract majors from courses
   const majors = {};
   allCourses.forEach(course => {
@@ -160,10 +162,18 @@ chart = drawBarChart(getAllCourses());
 
 // Add an event listener to the filter button
 const filterButton = document.getElementById('data_filter');
+const clearDataButton = document.querySelector('#data_clear');
 
 filterButton.addEventListener('click', () => {
   const majorInput = document.getElementById('major').value;
   const filteredData = filterChartData(chartData, majorInput);
+});
+
+clearDataButton.addEventListener("click", (event) => {
+  console.log('clear browser data');
+  localStorage.clear();
+  console.log('localStorage Check', localStorage.getItem('storedData'))
+
 });
 
 function removeData(chart) {
