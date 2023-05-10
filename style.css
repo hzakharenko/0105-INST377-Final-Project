@@ -35,6 +35,10 @@ nav {
 	text-decoration: none;
 }
 
+.caption {
+	color: #7b8088;
+}
+
 .hero {
 	display: flex;
 	flex-wrap: wrap;
