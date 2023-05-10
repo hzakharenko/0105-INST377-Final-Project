@@ -2,7 +2,11 @@ body {
 	font-family: 'Merriweather Sans', sans-serif;
 	background-color: lightgray;
 	margin:0;
-	display: flex;
+	display:flex;
+}
+
+.about-text {
+	font-size: 20px;
 }
 
 header {
@@ -62,6 +66,11 @@ nav {
     border: 20px;
 }
 
+.container_about {
+    padding: 100px;
+    border: 100px;
+}
+
 .text {
 	flex: 1;
 	margin-right: 20px;
@@ -94,6 +103,10 @@ nav {
 .big_chart {
 	width: 95%;
 	height: 100%
+}
+
+a {
+	color: lightcoral;
 }
 
 form input {
