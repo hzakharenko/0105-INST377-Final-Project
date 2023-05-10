@@ -22,7 +22,7 @@
         <header>
             <nav>
                 <div class="logo">
-                    <img src="images/logo.jpg" alt="Logo">
+                    <img src="images/umd_logo.png" alt="Logo">
                 </div>
                 <div class="links">
                     <ul>
@@ -41,23 +41,15 @@
                 <img src="images/chart.jpg" alt="Image 1">
             </div>
         </div>
-        <div class="container">
-            <div class="text">
-                <h2>Majors with the most course offerings</h2>
-                <p>Template photos courtesy of Unsplash.</p>
-            </div>
-            <div class="chart">
-                <img src="images/chart.jpg" alt="Image 2">
-            </div>
-        </div>
-        <div class="container">
+        <div class="container_sides">
             <!--container-->
             <div class="left_section box">
                 <!--left inputs-->
-                <h3>What major are you thinking about classes from?</h3>
+                <h1>What major are you thinking about taking classes for?</h1>
+                <h3>If you have an idea of what you might want to study, enter it here to see how many course offerings it has.</h3>
                 <form class="box main_form">
                     <div>
-                        <label for="major">Filter By major</label>
+                        <label for="major">Filter By Major:</label>
                         <input type="text" id="major" name="major">
                     </div>
                     <div class="buttons">
@@ -68,16 +60,31 @@
             </div>
             <div class="right_section box">
                 <!--right section-->
-                <!--images box-->
-                <div class="text">
-                    <h2>Majors with the least course offerings</h2>
-                    <p>Right now this chart shows all the majors with their course offerings, and lets the user filter. Having trouble getting the chart to represent what the user filters:</p>
-                </div>
                 <div class="chart">
-                    <div class="chart_container">
+                    <div class="big_chart">
                         <canvas id="myChart"></canvas>
-                      </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="container_sides">
+            <h1>Don't know what you want to major in yet?</h1>
+            <h3>Take a look at some of the majors with the most offerings, and maybe some course codes to avoid picking as a major.</h3>
+        </div>
+        <div class="container">
+            <div class="text">
+                <h2>Majors with the most course offerings</h2>
+                <p>These are the majors at the UMD that offer the most class options to take, as taken from live four years of course data from the student-run API <a href="https://umd.io/" target="_blank">UMD.io</a></p>
+            </div>
+            <div class="chart_container">
+                <canvas id="myChart2"></canvas>
+            </div>
+            <div class="text">
+                <h2>Majors with the least course offerings</h2>
+                <p>These are the course codes at UMD that offer the least class options to take, as taken from live four years of course data from the student-run API <a href="https://umd.io/" target="_blank">UMD.io</a></p>
+            </div>
+            <div class="chart_container">
+                <canvas id="myChart3"></canvas>
             </div>
         </div>
     </div>

@@ -1,7 +1,8 @@
 body {
-	margin: 0;
-	padding: 0;
 	font-family: 'Merriweather Sans', sans-serif;
+	background-color: lightgray;
+	margin:0;
+	display: flex;
 }
 
 header {
@@ -45,7 +46,16 @@ nav {
 .container {
     padding: 20px;
     border: 20px;
-    background-color: lightgray;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.container_sides {
+    padding: 20px;
+    border: 20px;
 }
 
 .text {
@@ -71,13 +81,14 @@ nav {
 	height: auto;
 }
 
-.chart img{
-    width: 50%;
-    height: auto;
+.chart_container {
+	width: 70%;
+	height: 70%;
 }
 
-.chart_container {
-	width: 100%;
+
+.big_chart {
+	width: 95%;
 	height: 100%
 }
 

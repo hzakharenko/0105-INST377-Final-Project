@@ -30,6 +30,68 @@ async function getAllCourses() {
   return majors;
 }
 
+// Graph the 10 majors with the most course offerings
+getAllCourses().then(() => {
+  const ctx = document.getElementById('myChart2').getContext('2d');
+  const sortedMajors = Object.entries(chartData)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10); // Get the top 10 majors by course count
+  const labels = sortedMajors.map(major => major[0]);
+  const data = sortedMajors.map(major => major[1]);
+
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Number of Courses',
+        data: data,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+});
+
+// Graph the 10 majors with the least course offerings
+getAllCourses().then(() => {
+  const ctx = document.getElementById('myChart3').getContext('2d');
+  const sortedMajors = Object.entries(chartData)
+    .sort((a, b) => a[1] - b[1]) // Sort by the number of courses in ascending order
+    .slice(0, 10); // Get the bottom 10 majors by course count
+  const labels = sortedMajors.map(major => major[0]);
+  const data = sortedMajors.map(major => major[1]);
+
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Number of Courses',
+        data: data,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+});
+
 // Draw bar chart of number of courses per major
 async function drawBarChart() {
   // Get the canvas element
