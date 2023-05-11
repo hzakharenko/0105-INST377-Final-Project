@@ -159,9 +159,9 @@ async function filterBarChart(filteredData) {
   const canvas = document.getElementById('myChart');
 
   // Make sure filtered data is being put in the chart
-  const majors = filteredData
-  console.log("The filtered data we will now represent in the bar chart is")
-  console.log(majors)
+  const majors = filteredData;
+  console.log("The filtered data we will now represent in the bar chart is");
+  console.log(majors);
 
   // Check if a chart already exists
   const existingChart = Chart.getChart(canvas);
@@ -220,10 +220,10 @@ function filterChartData(data, majorInput) {
     .filter(([key, value]) => key === input)
     .reduce((obj, [key, value]) => {
       obj[key] = value;
-      console.log(obj)
+      console.log(obj);
       return obj;
     }, {});
-  console.log(filteredData)
+  console.log(filteredData);
   filterBarChart(filteredData);
 }
 
@@ -245,7 +245,7 @@ filterButton.addEventListener('click', () => {
 clearDataButton.addEventListener("click", (event) => {
   console.log('clear browser data');
   localStorage.clear();
-  console.log('localStorage Check', localStorage.getItem('storedData'))
+  console.log('localStorage Check', localStorage.getItem('storedData'));
 
 });
 

@@ -1,8 +1,8 @@
 body {
 	font-family: 'Merriweather Sans', sans-serif;
 	background-color: lightgray;
-	margin:0;
-	display:flex;
+	margin: 0;
+	display: flex;
 }
 
 .about-text {
@@ -47,13 +47,13 @@ nav {
 	display: flex;
 	flex-wrap: wrap;
 	padding: 20px;
-    border: 20px;
-    background-color: lightcoral;
+	border: 20px;
+	background-color: lightcoral;
 }
 
 .container {
-    padding: 20px;
-    border: 20px;
+	padding: 20px;
+	border: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -62,13 +62,13 @@ nav {
 
 
 .container_sides {
-    padding: 20px;
-    border: 20px;
+	padding: 20px;
+	border: 20px;
 }
 
 .container_about {
-    padding: 100px;
-    border: 100px;
+	padding: 100px;
+	border: 100px;
 }
 
 .text {
@@ -87,8 +87,8 @@ nav {
 	font-weight: 600;
 	position: relative;
 	bottom: 0;
-  }
-  
+}
+
 
 .text p {
 	font-size: 16px;
@@ -127,14 +127,14 @@ form input {
 	width: -webkit-fill-available;
 	/* Mozilla-based browsers will ignore this. */
 	width: fill-available;
-  
+
 	/* here we are setting white space correctly */
 	margin-bottom: 1rem;
 	height: 2rem;
 	border-radius: 4px;
-  }
-  
-  form label {
+}
+
+form label {
 	width: 100%;
 	width: -moz-available;
 	/* WebKit-based browsers will ignore this. */
@@ -142,8 +142,8 @@ form input {
 	/* Mozilla-based browsers will ignore this. */
 	width: fill-available;
 	align-items: flex-start;
-  
+
 	display: block;
 	/* this turns the label text into a box we can set margins on */
 	margin-bottom: 0.5rem;
-  }
+}
