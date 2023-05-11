@@ -5,17 +5,26 @@ let isFilterClicked = false;
 
 // Get all courses and extract majors
 async function getAllCourses() {
-  const allCourses = [];
+  let allCourses = [];
 
-  for (let i = 1; i <= 157; i++) {
-    const url = `https://api.umd.io/v1/courses?page=${i}`;
-    const response = await fetch(url);
-    const courses = await response.json();
-    allCourses.push(...courses);
+  //check if storedData is in localStorage
+  const storedData = localStorage.getItem('storedData');
+  if (storedData) {
+    allCourses = JSON.parse(storedData);
+    console.log('Data retrieved from localStorage.');
+  } else {
+    console.log('retrieving fresh data...');
+    for (let i = 1; i <= 157; i++) {
+      const url = `https://api.umd.io/v1/courses?page=${i}`;
+      const response = await fetch(url);
+      const courses = await response.json();
+      allCourses.push(...courses);
+    }
+
+    localStorage.setItem('storedData', JSON.stringify(allCourses));
+    console.log('Data stored in localStorage.');
   }
 
-  localStorage.setItem('storedData', JSON.stringify(allCourses));
-  console.log('localStorage Check', localStorage.getItem('storedData'))
   // Extract majors from courses
   const majors = {};
   allCourses.forEach(course => {
@@ -25,8 +34,9 @@ async function getAllCourses() {
       majors[course.dept_id] = 1;
     }
   });
+
   chartData = majors; // Store the data in the global variable
-  console.log(majors)
+  console.log(majors);
   return majors;
 }
 
